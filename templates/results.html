@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c5282;
+        }
+        .result {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .filename {
+            font-weight: bold;
+            color: #2c5282;
+            font-size: 18px;
+        }
+        .snippet {
+            margin-top: 8px;
+            color: #444;
+        }
+        a {
+            text-decoration: none;
+        }
+        .back {
+            margin-bottom: 20px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="back">Back to Search</a>
+    <h1>Results for "{{ query }}"</h1>
+
+    {% if results %}
+        {% for result in results %}
+        <div class="result">
+            <div class="filename">
+                <a href="/open/{{ result.filename }}">
+                    {{ result.filename }} - Page {{ result.page_num }}
+                    
+            </div>
+            <div class="snippet">{{ result.snippet | safe }}</div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No results found. Try a different search term.</p>
+    {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+venv/
+search_index/
+parsha_text.json
+__pycache__/
+*.__pyc
